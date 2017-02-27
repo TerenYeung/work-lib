@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>stickUp-2</title>
+    <script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js
+"></script>
+    <style>
+        html,body{
+            margin:0;
+            padding:0;
+            height: 100%;
+            width: 100%;
+            font-size:30px;
+            font-weight: 800;
+            font-family: 微软雅黑,arial;
+            text-align: center;
+        }
+        ul,li{
+            margin: 0;
+            padding: 0;
+            list-style:none;
+        }
+        div.nav{
+            width: 1200px;
+            border:3px solid black;
+            margin: 0 auto;
+            margin-top: 10px;
+            border-radius: 3px;
+            background: white;
+
+        }
+        ul{
+            text-align: center;
+        }
+        ul:after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        li{
+            float: left;
+            width: 200px;
+            height: 50px;
+            line-height: 50px;
+            padding: 0 50px;
+        }
+
+        h3{
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform: translateY(-50%);
+            transform: translateX(-50%);
+            color:white;
+
+        }
+        a{
+            color: white;
+            font-style: italic;;
+            display: block;
+            text-decoration: none;
+        }
+        .intro{
+            position: relative;
+            background: #333;
+            width: 100%;
+            height: 200px;
+        }
+
+        .song{
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        .song-2,.song-4{
+            background: #e6f1fa;
+        }
+        .song>p{
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform: translateY(-50%);
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+<body>
+<div class="intro">
+    <h3>stick up</h3>
+</div>
+<div class="nav">
+    Down By the Salley Garden
+</div>
+<div class="song song-1">
+    <p>Down By the Salley Garden</p>
+</div>
+
+<div class="nav">
+    一个人的歌
+</div>
+<div class="song song-2">
+    <p>一个人的歌</p>
+</div>
+
+<div class="nav">
+    写给离开
+</div>
+<div class="song song-3">
+    <p>写给离开</p>
+</div>
+
+<div class="nav">
+    Stand By Me
+</div>
+<div class="song song-4">
+    <p>Stand By Me</p>
+</div>
+<script src="StickUp2.js"></script>
+<script>
+    $('.nav').each(function(handler) {
+   $(this).stickUp2()
+})
+</script>  
+</body>
+</html>

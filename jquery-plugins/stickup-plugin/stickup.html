@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>stickUp</title>
+    <script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js
+"></script>
+    <style>
+        html,body{
+            margin:0;
+            padding:0;
+            height: 100%;
+            width: 100%;
+            font-size:20px;
+            font-weight: 800;
+            font-family:arial;
+            text-align: center;
+        }
+        ul,li{
+            margin: 0;
+            padding: 0;
+            list-style:none;
+        }
+        div#nav{
+            width: 1200px;
+            border:3px solid;
+            margin: 10px auto;
+            border-radius: 3px;
+        }
+        ul{
+            text-align: center;
+        }
+        ul:after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        li{
+            float: left;
+            width: 200px;
+            height: 50px;
+            line-height: 50px;
+            padding: 0 50px;
+        }
+
+        h3{
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform: translateY(-50%);
+            transform: translateX(-50%);
+
+        }
+        a{
+            color: white;
+            font-style: italic;;
+            display: block;
+            text-decoration: none;
+        }
+        .homePage,.information,.contact,.aboutMe{
+            font-size:40px;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            text-align: center;
+        }
+        .intro{
+            position: relative;
+            background: #333;
+            width: 100%;
+            height: 200px;
+        }
+        .intro>h3{
+            color: white;
+        }
+        .information,.aboutMe{
+            background: #e6f1fa;
+        }
+    </style>
+</head>
+<body>
+    <div class="intro">
+        <h3>stick up</h3>
+    </div>
+    <div id="nav">
+        <ul>
+            <li>HomePage</li>
+            <li>Information</li>
+            <li>Contact</li>
+            <li>About Me</li>
+        </ul>
+    </div>
+    <div class="homePage">
+        <h3>HomePage</h3>
+    </div>
+    <div class="information">
+        <h3>Information</h3>
+    </div>
+    <div class="contact">
+        <h3>Contact</h3>
+    </div>
+    <div class="aboutMe">
+        <h3>About Me</h3>
+    </div>
+</body>
+<script src="StickUp.js"></script>
+<script>
+        $('#nav').stickUp()
+</script>
+</html>

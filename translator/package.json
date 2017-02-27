@@ -1,0 +1,26 @@
+{
+  "name": "prue-translator",
+  "version": "1.1.6",
+  "description": "a CLI inpterpretor between English and Chinese",
+  "main": "index.js",
+  "bin": {
+    "turnout": "./bin/turnout.js",
+    "translate": "./bin/turnout.js",
+    "interpret": "./bin/turnout.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "translator",
+    "reader",
+    "English",
+    "Chinese"
+  ],
+  "author": "teren <terenyeung@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "colors": "^1.1.2",
+    "yargs": "^6.5.0"
+  }
+}

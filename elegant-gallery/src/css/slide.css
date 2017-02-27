@@ -1,0 +1,97 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  height: 100vh;
+   background: #eee url(../../img/bg.jpg) no-repeat;
+   background-size:cover;
+}
+
+a{
+  text-decoration: none;
+}
+
+ul,li{
+  list-style:none;
+}
+
+.clearfix:after{
+  content:"";
+  display: block;
+  clear: both;
+}
+
+img{
+  float: left;
+}
+
+.img-box{
+  position: absolute;
+}
+
+.viewpoint{
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
+  margin:0 auto;
+  overflow: hidden;
+  /*position: relative;*/
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+}
+
+.viewpoint:hover{
+  cursor: pointer;
+}
+
+.viewpoint>.btn{
+  color:#ccc;
+  font-size: 20px;
+  background: rgba(0,0,0,0.6);
+  font-weight: 800;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  -webkit-border-radius:50%;
+          border-radius:50%;
+  position: absolute;
+}
+.viewpoint>.btn.prev{
+  left: 10px;
+  top: 50%;
+  margin-top: -15px;
+}
+.viewpoint>.btn.next{
+  right: 10px;
+  top: 50%;
+  margin-top: -15px;
+}
+
+.viewpoint>.bullet{
+  bottom: 10px;
+  left: 50%;
+  -webkit-transform:translateX(-50%);
+      -ms-transform:translateX(-50%);
+          transform:translateX(-50%);
+  position: absolute;
+  /*border:1px solid;*/
+}
+.viewpoint>.bullet>li{
+  width: 15px;
+  height: 5px;
+  background: rgba(0,0,0,0.6);
+  /*border:1px solid;*/
+  -webkit-border-radius:2px;
+          border-radius:2px;
+  display: inline-block;
+  margin: 0 5px;
+}
+.active{
+  background: rgba(255,255,255,0.8)!important;
+}

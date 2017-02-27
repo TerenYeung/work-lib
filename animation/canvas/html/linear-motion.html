@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>linear-motion</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+
+</head>
+<body>
+	<canvas id="canvas"  width="500" height="500" style="background:#000"></canvas>
+	<script src='../js/utils.js'></script>
+<script src='../js/ball.js'></script>
+    <script>
+
+    //这个脚本中，匀速运动的原理是通过连续改变原点在x轴上的坐标，从而实现匀速运动；
+    	var canvas = document.getElementById('canvas');
+    	var context = canvas.getContext('2d');
+
+    	var ball = new Ball();
+
+    	var xspeed = 3;//定义每渲染1帧，图形在x轴移动的距离（移动原点）	
+
+    	(function drawFrame(){
+    		window.requestAnimationFrame(drawFrame,canvas);
+    		context.clearRect(0,0,canvas.width,canvas.height);
+
+    		ball.x += xspeed;
+    		ball.y = canvas.height/2;
+    		//ball.y += 1;
+
+
+    		if(ball.x>canvas.width+ball.radius){
+    			ball.x = -ball.radius;
+    		} 
+            if(ball.y-ball.radius>canvas.height){
+                ball.y = -ball.radius;
+            }
+
+    		ball.draw(context);
+    	})();
+
+
+    </script>
+</body>
+</html>

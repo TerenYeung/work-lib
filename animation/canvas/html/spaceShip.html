@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>spaceShip</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+
+</head>
+<body>
+	<canvas id="canvas"  width="500" height="500" style="background:#000"></canvas>
+	<script src='../js/utils.js'></script>
+<script src='../js/spaceShip.js'></script>
+    <script>
+
+  window.onload = function(){
+    var canvas = document.getElementById('canvas');
+        var context = canvas.getContext('2d');
+
+
+        var spaceShip = new SpaceShip();
+        spaceShip.x = canvas.width/2;
+        spaceShip.y = canvas.height/2;
+
+        var vr = 0,
+            vx = 0,
+            vy = 0,
+            ax = 0,
+            ay = 0,
+            angle = 0,
+            thrust = 0;
+
+
+        window.addEventListener('keydown',function(e){
+            switch(e.keyCode){
+                case 37://left
+                    vr = -3;
+                    vx = 0;
+                    vy = 0;
+                    break;
+                case 38://up
+                    spaceShip.showFlame = true;
+                    thrust = 0.05;
+                    break;
+                case 39://right
+                    vr = 3;
+                    vx = 0;
+                    vy = 0;
+                    break;
+                case 40://down
+                    vx = 0;
+                    vy = 0;
+                    ax = 0;
+                    ay = 0;
+            }
+        },false);
+
+
+        window.addEventListener('keyup',function(e){
+                vr = 0;
+                thrust = 0;
+                spaceShip.showFlame = false;
+        },false);
+
+
+        (function drawFrame(){
+            window.requestAnimationFrame(drawFrame,canvas);
+            context.clearRect(0,0,canvas.width,canvas.height);
+            
+            spaceShip.rotation += vr*Math.PI/180;
+
+            angle = spaceShip.rotation;
+
+            ax = Math.cos(angle)*thrust;
+            ay = Math.sin(angle)*thrust;
+
+            vx += ax;
+            vy += ay;
+
+            spaceShip.x += vx;
+            spaceShip.y += vy;
+
+
+            spaceShip.draw(context);
+        })();
+
+  }
+    	
+
+    </script>
+</body>
+</html>

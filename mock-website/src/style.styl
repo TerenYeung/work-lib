@@ -1,0 +1,368 @@
+themeColor = #aa9144
+bgColor = #E8EDDF
+.blade-homePage
+	.blade-homePage-wrap
+		position relative
+		background #fff url(https://terenyeung.github.io/mywork/mock-website/src/assets/img/bg-image-2.jpg) no-repeat
+		background-size cover
+		height 100vh
+		.blade-homePage-nav
+			padding 7px 40px
+			box-sizing border-box
+			width 100%
+			position absolute
+			z-index 99
+			.blade-homePage-nav-logo-2
+				display none
+			.blade-homePage-nav-logo
+				height 61px
+				float left
+				img
+					position relative
+					top 12px
+			.blade-homePage-nav-button-menu
+				height 61px
+				line-height 61px
+				float right
+				color #fff
+				&:hover
+					cursor pointer					
+			@media (max-width:970px)
+				border-bottom 1px solid #eee
+				background #fff
+				.blade-homePage-nav-logo-2
+					display block
+					.icon-menu
+						font-size 30px
+						vertical-align middle
+						&:hover
+							cursor pointer
+					.nav-img
+						padding-left 10px
+						display inline-block
+						vertical-align middle
+				.blade-homePage-nav-logo
+					display none
+				.blade-homePage-nav-button-menu
+					display none
+				
+
+		.blade-homePage-themeIntro
+			width 1200px
+			margin 0 auto
+			padding 100px 0
+			text-align center
+			p.caption
+				margin 40px 0
+			h1
+				margin 40px 0
+			p.large
+				width 870px
+				margin 0 auto
+			@media (max-width:970px)
+				width 100%
+				p.large
+					width 80%
+
+.blade-sidebar
+	position absolute
+	top 155px
+	right 80px
+	text-align right
+	width 300px
+	display none
+	.blade-sidebar-list
+		li
+			padding 20px 0
+			transition color .3s
+			&:hover
+				color themeColor
+			a
+				font 800 16px/24px "Jaapokki", Helvetica, Arial, sans-serif	
+				color #000
+			.icon-arrow
+				display inline-block
+				transform rotateZ(180deg)
+	.blade-sidebar-contacts
+		padding-top 80px
+		li
+			display inline-block
+			padding 0 15px
+			transition color .3s
+			&:hover
+				color themeColor
+
+.blade-sidebar-left
+	display none
+	@media (max-width:970px)
+		position fixed
+		top 54px
+		background #fff
+		overflow auto
+		.blade-sidebar-left-list
+			width 250px
+			li
+				padding 15px 10px
+				transition all .3s
+				a
+					color #000
+				&:hover
+					background themeColor
+					a,.icon-arrow
+						color #fff
+						
+				.icon-arrow
+					transform rotateZ(180deg)
+					float right
+		.blade-sidebar-contacts
+			li
+				display inline-block
+				padding 10px 15px
+				&:hover
+					color themeColor
+	
+.blade-services
+	background bgColor
+	padding 60px 0
+	.blade-services-wrap
+		width 1200px
+		margin 0 auto
+		p.big
+			padding 20px 0
+			width 720px
+			margin 0 auto
+		.blade-services-list
+			display flex
+			justify-content space-between
+			flex-wrap wrap
+			li
+				flex-basis 25%
+				text-align center
+				a
+					font-weight 800
+					color #000
+					display inline-block
+					padding 20px 0
+					transition color .3s
+					&:hover
+						color themeColor
+	.blade-services-banner
+		background #fff
+		// margin 60px 0
+		width 1200px
+		height 580px
+		margin 60px auto 0
+		display flex
+		justify-content space-between
+		.blade-services-banner-intro
+			text-align center
+			padding 130px 100px
+			p.big
+				padding 60px 0
+			a:hover
+				color #fff
+				background #000
+	@media (max-width:970px)
+		// .blade-services-wrap
+		// 	width 80%
+		// 	p.big
+		// 		width 80%
+		// .blade-services-banner
+		// 	width 100%
+				
+.blade-barbers
+	background bgColor
+	.blade-barbers-wrap
+		width 1200px
+		margin 0 auto
+		p.big
+			width 720px
+			margin 60px auto
+		.blade-barbers-list
+			display flex
+			justify-content space-between
+			>li
+				background #fff
+				flex-basis 370px
+				text-align center
+				.blade-barbers-list-wrap
+					padding 40px 30px 20px
+				a
+					font-weight 800
+					color #000
+					transition color .3s
+					&:hover
+						color themeColor
+				p.small
+					padding 20px 0
+				.blade-barbers-contacts
+					li
+						display inline-block
+						padding 0 10px
+		
+	.blade-barbers-banner
+		margin-top 60px 
+		background #242423 url(https://terenyeung.github.io/mywork/mock-website/src/assets/img/bg-image-3.jpg) no-repeat
+		background-size cover
+		padding 120px 0
+		height 309px
+		text-align left	
+		.blade-barbers-banner-wrap
+			margin 0 auto
+			width 1200px
+			h2
+				text-align left
+				color #fff
+			p
+				text-align left
+				width 570px
+				padding 80px 0
+	@media (max-width:970px)
+		// .blade-barbers-banner
+		// 	.blade-barbers-banner-wrap
+		// 		width 80%
+	
+.blade-testimonials
+	background bgColor
+	.blade-testimonials-wrap
+		padding 60px 0
+		p.big
+			width 720px
+			margin 40px auto
+		.blade-testimonials-slide
+			width 1000px
+			padding 0 100px
+			margin 0 auto
+			position relative
+			.blade-testimonials-slide-viewpoint
+				width 1000px
+				height 365px
+				overflow hidden
+				// border 1px solid
+				background #fff
+				.blade-testimonials-slide-wrap
+					width 3000px
+					// border 1px solid
+					.blade-testimonials-slide-item
+						box-sizing border-box
+						float left
+						width 1000px
+						padding 82.5px 100px
+						.blade-testimonials-slide-img
+							float left
+							img
+								border-radius 50%
+						.blade-testimonials-slide-cite-contacts
+							padding-left 200px
+							cite
+								display block
+								font-weight 800
+							q
+								display block
+								padding 40px 0
+							.blade-testimonials-slide-contacts
+								.iconfont
+									padding 0 5px
+									color #000
+									transition color .3s
+									&:hover
+										color themeColor		
+			.iconfont.icon-arrow-2
+				position absolute
+				color #999
+				font-size 40px
+				transition all .3s
+				&:hover
+					color themeColor
+					cursor pointer
+				&.arrow-left
+					transform translateY(-50%) rotateZ(180deg) 
+					top 50%
+					left 0
+				&.arrow-right
+					transform translateY(-50%)
+					top 50%
+					right 0
+	@media (max-width:970px)
+		.blade-testimonials-wrap
+			p.big 
+				width 80%
+				
+.blade-blog-posts
+	background bgColor
+	padding-bottom 60px
+	p.big
+		width 720px
+		margin 40px auto			
+	.blade-blog-posts-wrap
+		width 1200px
+		margin 0 auto
+		.blade-blog-posts-list
+			display flex
+			justify-content space-between
+			text-align left
+			&:first-child,&:last-child
+				background #242423
+				h2
+					text-align left
+					color #fff
+					width 300px
+			&:nth-child(2)
+				background #fff
+				h2
+					color #000
+					text-align left 
+					width 300px
+				a:hover
+					background #000
+					color #fff
+			.blade-blog-posts-intro
+				padding 100px
+				p.small
+					padding 40px 0
+	@media (max-width:970px)
+		// p.big
+		// 	width 60%
+		// .blade-blog-posts-wrap
+		// 	width 80%
+
+.blade-footer
+	background #fff
+	padding 60px 0
+	.blade-footer-wrap
+		width 1200px
+		margin 0 auto
+		text-align center
+		.blade-footer-logo
+			margin 0 auto
+		p.big
+			width 400px
+			margin 20px auto
+		.blade-footer-nav
+			padding 40px 0
+
+			li
+				display inline-block
+				padding 0 20px
+				a
+					transition color .3s
+					font-weight 800
+					color #9B9B9B
+					&:hover
+						color themeColor
+		.blade-footer-contacts
+			color #9B9B9B
+			li
+				display inline-block
+				padding 0 10px
+				a
+					font-weight 800
+					transition color .3s
+					color #9B9B9B
+					&:hover
+						color themeColor
+	@media (max-width:970px)
+		.blade-footer-wrap
+			width 80%
+			p.big
+				width 60%

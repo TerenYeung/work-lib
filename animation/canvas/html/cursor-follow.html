@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>rotation-to-cursor</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+
+</head>
+<body>
+	<canvas id="canvas"  width="500" height="500" style="background:#000"></canvas>
+	<script src='../js/utils.js'></script>
+<script src='../js/arrow.js'></script>
+    <script>
+
+  window.onload = function(){
+    var canvas = document.getElementById('canvas');
+        var context = canvas.getContext('2d');
+        var mouse = utils.captureMouse(canvas);
+        var arrow = new Arrow();
+
+        var angle = 0;
+        arrow.x = canvas.width/2;
+        arrow.y = canvas.height/2;
+
+        (function drawFrame(){
+            window.requestAnimationFrame(drawFrame,canvas);
+            context.clearRect(0,0,canvas.width,canvas.height);
+            
+            var dx = mouse.x - arrow.x,
+                dy = mouse.y - arrow.y;
+
+            angle = Math.atan2(dy,dx);
+
+
+            arrow.rotation = angle;
+            arrow.x += Math.cos(angle)*2;
+            arrow.y += Math.sin(angle)*2;
+
+            arrow.draw(context);
+        })();
+
+  }
+    	
+
+    </script>
+</body>
+</html>

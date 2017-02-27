@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>calendar</title>
+	<script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js
+"></script>
+	<style>
+		body{
+			margin: 0;
+			padding: 0;
+			font-family: 'Roboto', sans-serif;
+			font-weight: 200;
+            height:100%;
+            overflow: hidden;
+		}
+
+		.calendar{
+            width: 800px;
+            height: 500px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform:translate(-50%,-50%);
+		}
+		.date-header,.date-body,.date-footer{
+			background: #3f4c6b;
+			color:#fff;
+		}
+
+		.date-header{
+            border-bottom:1px solid rgba(255,255,255,0.5);
+            overflow: hidden;
+			font-size: 20px;
+			padding: 20px;
+            text-align: center;
+            word-spacing: 20px;
+		}
+        .prev{
+            float: left;
+        }
+		.next{
+			float:right;
+		}
+        .prev:hover,.next:hover{
+            cursor: pointer;
+            font-weight: 400;
+        }
+		.date-title{
+            font-weight: 400;
+            font-size:30px;
+		}
+        .date-body,.date-footer{
+            /*position: relative;*/
+            text-align: center;
+            /*border:1px solid #fff;*/
+        }
+        .date-body>.date-panel{
+            margin:0 auto;
+        }
+        .date-panel thead th{
+            padding:10px 30px;
+            font-weight: 300;
+            font-size:20px;
+            /*display: inline-block;*/
+            /*border:1px solid #fff;*/
+        }
+
+        .date-panel tbody td{
+            padding:20px;
+            /*border:1px solid #fff;*/
+        }
+        .date-panel tbody td:hover{
+            cursor: pointer;;
+            font-weight:800;
+        }
+        .date-footer{
+            border-top:1px solid rgba(255,255,255,0.5);
+            padding: 20px;
+            font-size: 30px;
+            word-spacing:10px;
+        }
+
+	</style>
+</head>
+<body>
+<div class="calendar"></div>
+<script src="calendar.js"></script>
+<script>
+        $('.calendar').datepicker();
+</script>
+</body>
+</html>

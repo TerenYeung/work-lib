@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>gravity-acceleraton</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+
+</head>
+<body>
+	<canvas id="canvas"  width="500" height="500" style="background:#000"></canvas>
+	<script src='../js/utils.js'></script>
+<script src='../js/ball.js'></script>
+    <script>
+
+   
+    	var canvas = document.getElementById('canvas');
+    	var context = canvas.getContext('2d');
+
+    	var ball = new Ball(20,'white');
+
+
+        //设置小球初始降落的位置
+        ball.x = canvas.width/2;
+        ball.y = canvas.height/5;
+
+        var vy = 0;
+        var gravity = 0.05;//定义重力加速度；
+        var bounce = -0.8;//定义反弹系数；
+
+        //碰撞测试
+        function checkGround(ball){
+            if(ball.y+ball.radius>canvas.height){
+
+                //小球碰到地面时，让球的位置暂时设置为在地面上
+                ball.y = canvas.height - ball.radius;
+
+                //此时设置小球落到地面时的速度为反向，大小为原来的0.8；
+                vy *= bounce;
+            }
+        }
+
+
+
+
+    	(function drawFrame(){
+    		window.requestAnimationFrame(drawFrame,canvas);
+    		context.clearRect(0,0,canvas.width,canvas.height);
+
+            //小球首先做向下的加速运动
+            vy += gravity;
+    		ball.y += vy;
+
+            //碰撞测试，当小球下落到地面时，vy *= bounce;
+            //此时小球在地面时的初始速度为vy *= bounce(vy此时是负值),接着继续向上运动，每渲染1帧，vy+=gravity，注意此时小球做向上的减速运动，直到速度为0时；
+            //接着小球继续做向下加速运动，循环往复，直到小球停止；
+            checkGround(ball)
+
+    		ball.draw(context);
+    	})();
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>accordion-plugin</title>
+    <script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js
+"></script>
+
+    <style>
+        html,body{
+            margin: 0;
+            padding: 0;
+            background: slateblue;
+        }
+        h3{
+            width: 300px;
+            height: 50px;
+            border:1px solid ;
+            text-align: center;
+            line-height: 50px;
+            margin: 30px auto;
+            font-family: arial;
+            font-style: italic;
+            color:white;
+            font-weight: 800;
+        }
+        ul,li{
+            list-style:none;
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            margin: 0 auto;
+            width: 500px;
+            height: 300px;
+
+        }
+        ul>li>p{
+            margin: 10px 100px;
+        }
+        ul>li>p:first-child{
+            width: 300px;
+            height: 30px;
+            border:1px solid white;
+            font-weight: 800;
+            text-align: center;
+            line-height: 30px;
+            color:white;
+            font-family: arial;
+        }
+        ul>li>p:first-child:hover{
+            cursor: pointer;
+            background: #000;
+        }
+        ul> li img{
+            width: 300px;
+            height: 240px;
+        }
+        ul>li>p+p{
+            /* display: none; */
+            height: 0;
+            overflow: hidden;
+            transition:all .5s;
+        }
+        ul>li.selected>p+p{
+            height: 240px;
+        }
+        br{
+            margin: 30px;
+        }
+
+    </style>
+</head>
+<body>
+<h3>accordion-plugin</h3>
+<br>
+<ul class="accordion">
+    <li class=selected>
+        <p>1</p>
+        <p><img src="http://o97duqgf5.bkt.clouddn.com/1-min.jpg" alt=""></p>
+    </li>
+    <li>
+        <p>2</p>
+        <p><img src="http://o97duqgf5.bkt.clouddn.com/2-min.jpg" alt=""></p>
+    </li>
+    <li>
+        <p>3</p>
+        <p><img src="http://o97duqgf5.bkt.clouddn.com/3-min.jpg" alt=""></p>
+    </li>
+    <li>
+        <p>4</p>
+        <p><img src="http://o97duqgf5.bkt.clouddn.com/4-min.jpg" alt=""></p>
+    </li>
+</ul>
+<script src="Accordion.js"></script>
+<script>
+        $('ul.accordion').accordion()
+</script>
+</body>
+</html>

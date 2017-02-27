@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>curve-motion</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+
+</head>
+<body>
+	<canvas id="canvas"  width="500" height="500" style="background:#000"></canvas>
+	<script src='../js/utils.js'></script>
+<script src='../js/ball.js'></script>
+    <script>
+
+  
+    	var canvas = document.getElementById('canvas');
+    	var context = canvas.getContext('2d');
+
+    	var ball = new Ball();
+
+    	var xspeed = 5;//定义每渲染1帧，图形在x轴移动的距离（移动原点）	
+        var ay = 0.1;//设置x轴上的每渲染1帧xspeed增加0.05;
+
+    	(function drawFrame(){
+    		window.requestAnimationFrame(drawFrame,canvas);
+    		context.clearRect(0,0,canvas.width,canvas.height);
+
+    		ball.x += xspeed;
+            
+    		ball.y += ay; 
+    		ay += 0.1
+
+
+
+
+    		ball.draw(context);
+    	})();
+
+
+    </script>
+</body>
+</html>

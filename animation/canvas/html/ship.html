@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>ship</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+
+</head>
+<body>
+	<canvas id="canvas"  width="500" height="500" style="background:#000"></canvas>
+	<script src='../js/utils.js'></script>
+<script src='../js/spaceShip.js'></script>
+    <script>
+
+  window.onload = function(){
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+
+    var spaceShip = new SpaceShip();
+        spaceShip.x = canvas.width/2;
+        spaceShip.y = canvas.height/2;
+
+    var vx = 0,
+        vy = 0,
+        vr = 0,
+        angle = 0,
+        thrust = 0;//按下前进键的助推力
+
+
+    window.addEventListener('keydown',function(e){
+        switch (e.keyCode){
+            case 37://left
+                vx = 0;
+                vy = 0;
+                vr = -3;
+            break;
+            case 38://up
+                thrust = 0.05;
+                spaceShip.showFlame = true;
+            break;
+            case 39://right
+                vx = 0;
+                vy = 0;
+                vr = 3;
+            break;//down
+            case 40:
+                vx = 0;
+                vy = 0;
+        }
+    },false);
+
+    window.addEventListener('keyup',function(e){
+        vr = 0;
+        thrust = 0;
+        spaceShip.showFlame = false;
+    },false);
+
+    (function drawFrame(){
+        window.requestAnimationFrame(drawFrame,canvas);
+        context.clearRect(0,0,canvas.width,canvas.height);
+            
+
+        //设置按下左右键时飞船的旋转
+        spaceShip.rotation += vr*Math.PI/180;
+
+        //设置按下前进键时飞船的前进路径
+        angle = spaceShip.rotation;
+        vx += Math.cos(angle)*thrust;
+        vy += Math.sin(angle)*thrust;
+
+        
+
+        spaceShip.x += vx;
+        spaceShip.y += vy;
+
+        spaceShip.draw(context)
+    })();
+
+  }
+    	
+
+    </script>
+</body>
+</html>
