@@ -50,7 +50,7 @@ FM_PlayControls.prototype = {
 	songReset(song){
 		// console.log(song)
 		this.audio.src = song.url
-		this.audio.load()
+		this.audio.load()//重新加载音频
 		this.audio.currentTime = 0
 		this.$songName.text(song.title)
 		this.$disk_img[0].src = song.picture
@@ -72,7 +72,7 @@ FM_PlayControls.prototype = {
 		var html = ''
 		var lyricArr = lyricStr.split('\n')
 		var regexp = /[\[\]\{\}\(\)\\]/g
-		var lyricArr = (""+lyricStr).split('\n')
+		// var lyricArr = (""+lyricStr).split('\n')
 		for(var i=0 ; i<lyricArr.length ; i++){
 			var lyric = lyricArr[i].slice(10,lyricArr[i].length)
 			if(!lyric){
@@ -118,6 +118,7 @@ FM_PlayControls.prototype = {
 			this.lyricPanelMove(curTime)
 		})
 	},
+
 	channelSelect(){
 		var self = this
 		this.$channelsPanel.on('click','li',function(){
