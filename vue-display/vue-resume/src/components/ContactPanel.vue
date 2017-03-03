@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'contactPanel',
+  name: 'ContactPanel',
   props:['navInfo'],
   data () {
     return {

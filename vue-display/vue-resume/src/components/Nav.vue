@@ -25,7 +25,7 @@ export default {
   components:{ BlogPanel , WorkPanel , AboutPanel , ContactPanel},
   data () {
     return {
-      selected:'',
+      selected:'ABOUT',
       'navName':[
         'BLOG',
         'WORK',
@@ -44,7 +44,6 @@ export default {
 <style scoped lang="less">
 
 #nav{
-  margin-top: 6rem;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -53,6 +52,7 @@ export default {
 }
 .nav-box{
   // border: 1px solid red;
+  
   display: flex;
   justify-content: space-around;
   width: 99.2rem;
@@ -61,6 +61,9 @@ export default {
     &:hover{
       border-bottom: .2rem solid #333;
     }
+  }
+  a{
+    font-size: 2rem;
   }
 }
 .panel-wrapper{
