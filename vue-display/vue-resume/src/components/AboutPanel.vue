@@ -79,7 +79,8 @@ export default {
                  { name: 'CSS', max: 100},
                  { name: 'JavaScript', max: 100},
                  { name: 'less', max: 100},
-                 { name: 'stylus', max: 100},
+                 { name: 'gulp', max: 100},
+                 { name: 'webpack', max: 100},
                  { name: 'PHP', max: 100},
                  { name: 'Bootstrap', max: 100},
                  { name: 'Vue', max: 100},
@@ -91,7 +92,7 @@ export default {
               type: 'radar',
               data : [
                   {
-                      value : [80, 75, 70, 70, 70,30,50, 50,60],
+                      value : [80, 75, 70, 70, 70,50,30,50, 50,60],
                       name : '技能分布'
                   }
               ]
