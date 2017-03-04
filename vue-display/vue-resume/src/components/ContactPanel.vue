@@ -53,6 +53,9 @@ export default {
   }
   .motto{
     margin: 2rem 0;
+    h3{
+      letter-spacing: 5px;
+    }
   }
 
 </style>
