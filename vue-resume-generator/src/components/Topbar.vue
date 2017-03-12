@@ -2,10 +2,21 @@
 	<div id="topbar">
 		<div class="wrapper">
 			<span class="logo">Resumer</span>
-
 			<div class="actions">
-				<button class="primary">保存</button>
-				<button>预览</button>
+				<div class="logined" v-if="logined">
+					<span class="welcome">你好，{{user.username}}</span>
+					<button class="button primary" @click.prevent="signOut">登出</button>
+				</div>
+				<div class="notLogined" v-else>
+					<button class="button primary" @click="isShow=true,dialogTitle='注册'" >注册</button>
+					<button class="button" @click="isShow=true,dialogTitle='登录'" >登录</button>
+					<MyDialog :title="dialogTitle" :visible="isShow" @close="isShow=false">
+						<SignUpForm @success="signIn($event)" v-if="dialogTitle === '注册'"/>
+						<SignInForm @success="signIn($event)" v-else="dialogTitle === '登录'"/>
+					</MyDialog>				
+				</div>
+<!-- 				<button class="primary">保存</button>
+				<button>预览</button> -->
 			</div>
 
 		</div>
@@ -13,8 +24,39 @@
 </template>
 
 <script>
+	import MyDialog from './MyDialog'
+	import SignUpForm from './SignUpForm'
+	import SignInForm from './SignInForm'
+	import AV from '../lib/leadcloud.js'
+
 	export default{
-		name:'Topbar'
+		name:'Topbar',
+		components: { MyDialog , SignUpForm , SignInForm},
+		data(){
+			return{
+				isShow: false,
+				dialogTitle: ''
+			}
+		},
+		computed:{
+			user(){
+				return this.$store.state.user
+			},
+			logined(){
+				return this.user.id
+			}
+		},
+		methods:{
+			signIn(user){
+				this.isShow = false
+				this.$store.commit('setUser',user)
+			},
+			signOut(){
+				AV.User.logOut()
+				this.$store.commit('removeUser')
+				this.isShow = false
+			}
+		}
 	}
 </script>
 
@@ -38,8 +80,12 @@
 			.logo
 				font-size: 24px;
 				color: #000;
-			
+		.actions
+			display flex
+			.welcome
+				margin-right 16px
 			button
+				margin-right 16px
 				background:#ddd;
 				width:72px;
 				height:32px;

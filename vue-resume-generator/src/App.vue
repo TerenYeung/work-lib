@@ -18,6 +18,7 @@ import ResumeEditor from './components/ResumeEditor'
 import ResumePreview from './components/ResumePreview'
 import icons from './assets/icon'
 import store from './store/index'
+import getAVUser from './lib/getAVUser.js'
 
 export default {
   name: 'app',
@@ -25,6 +26,12 @@ export default {
   components:{Topbar,ResumeEditor,ResumePreview},
   created(){
     document.body.insertAdjacentHTML('afterbegin',icons)
+    //vm实例创建后，从localStorage获取数据
+    let state = localStorage.getItem('state')
+    if(state){state = JSON.parse(state)}
+        console.log(state)
+    this.$store.commit('initData',{})
+    this.$store.commit('setUser',getAVUser())
   }
 }
 </script>

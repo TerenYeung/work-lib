@@ -1,5 +1,6 @@
 import Vuex from 'vuex'
 import Vue from 'vue'
+import objectPath from 'object-path'
 
 Vue.use(Vuex)
 
@@ -9,51 +10,84 @@ const store = new Vuex.Store({
 		resume:{
 			//关于改为config数组的问题；
 			//数组是有序键值对集合，使用vue的列表渲染数组能够保证每次渲染符合开发者期望的数据顺序，去掉config，使用对象渲染将导致每次顺序不一致；
-			config:[
-				{field:'profile',icon:'id'},
-				{field:'workHistory',icon:'work'},
-				{field:'education',icon:'book'},
-				{field:'projects',icon:'heart'},
-				{field:'awards',icon:'cup'},
-				{field:'contacts',icon:'phone'},
-			],
-			profile:{
-				name:'Flag',
-				city:'earth',
-				title:'FE freshman',
-				birthday:'19910101'
-			},
-			workHistory:[
-				{company: 'F',content: 'Facebook'},
-				{company: 'L',content: 'La...'},
-				{company: 'A',content: 'Amazon'},
-				{company: 'G',content: 'Google'},
-			],
-			education:[
-				{school: 'UCLA',major: 'CS',content: 'Play Games'},
-				{school: 'StandFord',major: 'Economics',content: 'Stock Buying'}
-			],
-			projects:[
-				{name: '微信打飞机',content: '画了个飞机'},
-				{name: '王者荣耀',content: '只会用后羿'}
-			],
-			awards:[
-				{name: 'Tennis',content: 'Championship'},
-				{name: 'Basketball',content: 'Gold Prize'}
-			],
-			contacts:[
-				{contact: 'phone',content: '18888888888'},
-				{contact: 'wechat', content: 'Page123'}
-			],
+			// profile:{},
+			// workHistory:[],
+			// education:[],
+			// projects:[],
+			// awards:[],
+			// contacts:[],
+		},
+		resumeConfig:[
+				{field:'profile',icon:'id',keys:['name','title','city','birthday']},
+				{field:'workHistory',icon:'work',type:'array',keys:['company','content']},
+				{field:'education',icon:'book',type:'array',keys:['school','major','content']},
+				{field:'projects',icon:'heart',type:'array',keys:['name','content']},
+				{field:'awards',icon:'cup',type:'array',keys:['name','content']},
+				{field:'contacts',icon:'phone',type:'array',keys:['contact','content']},
+		],
+		user:{
+			username:'',
+			id: ''
 		}														
 	},
 	mutations:{
+		initData(state,payload){
+			// state = payload
+			state.resumeConfig.map((item)=>{
+				if(item.type==='array'){
+					Vue.set(state.resume,item.field,[])
+				}else{
+					Vue.set(state.resume,item.field,{})
+					item.keys.map(key=>{
+						Vue.set(state.resume[item.field],key,'')
+					})
+				}
+			})
+			Object.assign(state,payload)
+		},
 		switchTab(state,payload){
 			state.selected = payload
+			var dataStr = JSON.stringify(state)
+			localStorage.setItem('state',dataStr)
 		},
-		// changeMsg(state,payload){
-		// 	state.
-		// }
+		// changeData(state,{field,index,key,value}){
+		// 	if(index===null){
+		// 		state.resume[field][key] = value
+		// 	}else{
+		// 		state.resume[field][index][key] = value
+		// 	}
+		// },
+		changeData(state,{path,value}){
+			objectPath.set(state.resume,path,value)
+			var dataStr = JSON.stringify(state)
+			localStorage.setItem('state',dataStr)
+		},
+		setUser(state,payload){
+			Object.assign(state.user,payload)
+		},
+		removeUser(state){
+			state.user.id = ''
+		},
+		addItem(state,payload){
+			state.resumeConfig.map(item=>{
+				if(item.field===payload){
+					console.log(item.field)
+					var fieldKeys = item.keys
+					console.log(fieldKeys)
+					var keysObj = {}
+					fieldKeys.map(subItem=>{
+						keysObj[subItem] = ''
+					})
+					console.log(keysObj)
+					state.resume[payload].push(keysObj)					
+				}
+			})	
+			// state[resume][payload].push()
+		},
+		removeItem(state,{field,index}){
+			console.log(state.resume[field][index])
+			state.resume[field].splice(index,1)
+		}
 	}
 })
 
